@@ -43,4 +43,9 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+   # この記憶ダイジェストを再利用しているのは単に利便性のため
+   def session_token
+    remember_digest || remember
+  end
 end
