@@ -22,7 +22,7 @@ module SessionsHelper
   def log_out
     forget(current_user)
     reset_session
-    @current_user = nil   # 安全のため
+    @current_user = nil # 安全のため
   end
 
   # 記憶トークンcookieに対応するユーザーを返す
@@ -38,8 +38,8 @@ module SessionsHelper
     end
   end
 
-   # ユーザーがログインしていればtrue、その他ならfalseを返す
-   def logged_in?
+  # ユーザーがログインしていればtrue、その他ならfalseを返す
+  def logged_in?
     !current_user.nil?
   end
 end
