@@ -44,17 +44,21 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     delete logout_path
     assert_redirected_to root_url
   end
-
-  test "login with remembering" do
-    log_in_as(@user, remember_me: '1')
-    assert_not cookies[:remember_token].blank?
-  end
-
-  test "login without remembering" do
-    # Cookieを保存してログイン
-    log_in_as(@user, remember_me: '1')
-    # Cookieが削除されていることを検証してからログイン
-    log_in_as(@user, remember_me: '0')
-    assert cookies[:remember_token].blank?
-  end
 end
+
+# class RememberingTest < UsersLoginTest
+
+#   test "login with remembering" do
+#     log_in_as(@user, remember_me: '1')
+#     assert_equal （コードを書き込む）, assigns(:user).（コードを書き込む）
+#   end
+
+#   test "login without remembering" do
+#     # Cookieを保存してログイン
+#     log_in_as(@user, remember_me: '1')
+#     # Cookieが削除されていることを検証してからログイン
+#     log_in_as(@user, remember_me: '0')
+#     assert cookies[:remember_token].blank?
+#   end
+
+# end

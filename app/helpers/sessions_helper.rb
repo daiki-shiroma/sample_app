@@ -36,6 +36,7 @@ module SessionsHelper
         @current_user = user
       end
     elsif (user_id = cookies.encrypted[:user_id])
+      raise  
       user = User.find_by(id: user_id)
       if user && user.authenticated?(cookies[:remember_token])
         log_in user
@@ -52,5 +53,10 @@ module SessionsHelper
   # 渡されたユーザーがカレントユーザーであればtrueを返す
   def current_user?(user)
     user && user == current_user
+  end
+
+   # アクセスしようとしたURLを保存する
+   def store_location
+    session[:forwarding_url] = request.original_url if request.get?
   end
 end
