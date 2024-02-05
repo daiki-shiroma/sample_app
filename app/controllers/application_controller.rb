@@ -1,6 +1,22 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
-  def hello
-    render html: "hello, world!"
+
+  private
+
+    # ユーザーのログインを確認する
+  def logged_in_user
+     return if logged_in?
+  
+      flash[:danger] = 'Please log in.'
+      redirect_to login_url, status: :see_other
   end
 end
+
+# ユーザーのログインを確認する
+# def logged_in_user
+#   unless logged_in?
+#     store_location
+#     flash[:danger] = "Please log in."
+#     redirect_to login_url, status: :see_other
+#   end
+# end
