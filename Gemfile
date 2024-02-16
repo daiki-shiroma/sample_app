@@ -42,3 +42,7 @@ group :test do
   gem 'selenium-webdriver',       '4.8.3'
   gem 'webdrivers',               '5.2.0'
 end
+
+group :production do
+  gem 'unicorn'
+end
